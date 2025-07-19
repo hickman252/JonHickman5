@@ -1,0 +1,34 @@
+import random
+import string
+
+def generate_random_password(length=16):
+    """
+    Generates a secure, random password containing uppercase letters,
+    lowercase letters, digits, and symbols.
+    """
+    if length < 8:
+        print("Warning: A password shorter than 8 characters may be insecure.")
+    
+    # Define the character sets to use for the password
+    # This includes: a-z, A-Z, 0-9, and special characters like !@#$%^&*
+    characters = string.ascii_letters + string.digits + string.punctuation
+    
+    # Generate the password by choosing random characters from the set
+    password = ''.join(random.choice(characters) for i in range(length))
+    
+    return password
+
+# --- Main execution block ---
+if __name__ == "__main__":
+    try:
+        # Ask the user for the desired password length
+        password_length = int(input("Enter the desired password length (e.g., 16): "))
+        
+        # Generate the password by calling the function
+        new_password = generate_random_password(password_length)
+        
+        # Print the final result
+        print(f"\nYour new generated password is:\n{new_password}")
+        
+    except ValueError:
+        print("\nError: Please enter a valid number.")
